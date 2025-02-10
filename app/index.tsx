@@ -1,35 +1,61 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { StyleSheet, Text, View, ImageBackground } from "react-native";
+import { useFonts } from "expo-font";
 
-export default function Page() {
+const App = () => {
+  const [fontsLoaded] = useFonts({
+    "Roboto-Regular": require("../assets/fonts/Roboto-Regular.ttf"),
+    "Roboto-Medium": require("../assets/fonts/Roboto-Medium.ttf"),
+    "Roboto-Bold": require("../assets/fonts/Roboto-Bold.ttf"),
+    "Inter-Medium": require("../assets/fonts/Inter-Medium.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
-      <View style={styles.main}>
-        <Text style={styles.title}>Hiiiiiii ^_^ World</Text>
-        <Text style={styles.subtitle}>This is the first page of your app.</Text>
-        <Button title="Click Me"></Button>
-      </View>
+      <ImageBackground
+        source={require("../assets/images/night.jpg")}
+        style={styles.background}
+        resizeMode="cover"
+      >
+        <View style={styles.content}>
+          <Text style={[styles.text, { fontFamily: "Inter-Medium" }]}>
+            Це текст поверх фонового зображення
+          </Text>
+        </View>
+      </ImageBackground>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
     alignItems: "center",
-    padding: 24,
+    overflow: "hidden",
   },
-  main: {
+  background: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+  },
+  content: {
     flex: 1,
     justifyContent: "center",
-    maxWidth: 960,
-    marginHorizontal: "auto",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    padding: 20,
+    borderRadius: 10,
   },
-  title: {
-    fontSize: 64,
-    fontWeight: "bold",
-  },
-  subtitle: {
-    fontSize: 36,
-    color: "#38434D",
+  text: {
+    color: "#fff",
+    fontSize: 18,
+    textAlign: "center",
   },
 });
+
+export default App;
