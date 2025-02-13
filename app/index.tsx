@@ -1,6 +1,31 @@
-import React from "react";
-import { StyleSheet, Text, View, ImageBackground } from "react-native";
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ImageBackground,
+  FlatList,
+} from "react-native";
 import { useFonts } from "expo-font";
+
+const COURSES = [
+  {
+    id: "45k6-j54k-4jth",
+    title: "HTML",
+  },
+  {
+    id: "4116-jfk5-43rh",
+    title: "JavaScript",
+  },
+  {
+    id: "4d16-5tt5-4j55",
+    title: "React",
+  },
+  {
+    id: "LG16-ant5-0J25",
+    title: "React Native",
+  },
+];
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -9,6 +34,8 @@ const App = () => {
     "Roboto-Bold": require("../assets/fonts/Roboto-Bold.ttf"),
     "Inter-Medium": require("../assets/fonts/Inter-Medium.ttf"),
   });
+
+  const [courses, setCourses] = useState(COURSES);
 
   if (!fontsLoaded) {
     return null;
@@ -25,6 +52,13 @@ const App = () => {
           <Text style={[styles.text, { fontFamily: "Inter-Medium" }]}>
             Це текст поверх фонового зображення
           </Text>
+          <FlatList
+            data={courses}
+            renderItem={({ item }) => (
+              <Text style={{ color: "#f6ff" }}>{item.title}</Text>
+            )}
+            keyExtractor={(item) => item.id}
+          />
         </View>
       </ImageBackground>
     </View>
