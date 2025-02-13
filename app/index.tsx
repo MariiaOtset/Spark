@@ -7,6 +7,7 @@ import {
   FlatList,
 } from "react-native";
 import { useFonts } from "expo-font";
+import RegistrationScreen from "./Screens/RegistrationScreen";
 
 const COURSES = [
   {
@@ -42,26 +43,27 @@ const App = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require("../assets/images/night.jpg")}
-        style={styles.background}
-        resizeMode="cover"
-      >
-        <View style={styles.content}>
-          <Text style={[styles.text, { fontFamily: "Inter-Medium" }]}>
-            Це текст поверх фонового зображення
-          </Text>
-          <FlatList
-            data={courses}
-            renderItem={({ item }) => (
-              <Text style={{ color: "#f6ff" }}>{item.title}</Text>
-            )}
-            keyExtractor={(item) => item.id}
-          />
-        </View>
-      </ImageBackground>
-    </View>
+    // <View style={styles.container}>
+    //   <ImageBackground
+    //     source={require("../assets/images/night.jpg")}
+    //     style={styles.background}
+    //     resizeMode="cover"
+    //   >
+    //     <View style={styles.content}>
+    //       <Text style={[styles.text, { fontFamily: "Inter-Medium" }]}>
+    //         Це текст поверх фонового зображення
+    //       </Text>
+    //       <FlatList
+    //         data={courses}
+    //         renderItem={({ item }) => (
+    //           <Text style={{ color: "#f6ff" }}>{item.title}</Text>
+    //         )}
+    //         keyExtractor={(item) => item.id}
+    //       />
+    //     </View>
+    //   </ImageBackground>
+    // </View>
+    <RegistrationScreen />
   );
 };
 
