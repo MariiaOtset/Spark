@@ -14,7 +14,6 @@ const CustomButton: React.FC<CustomButtonProps> = ({ onPress, title }) => (
 
 const styles = StyleSheet.create({
   button: {
-    margin: 16,
     marginTop: 43,
     paddingVertical: 16,
     paddingHorizontal: 32,
