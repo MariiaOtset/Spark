@@ -46,6 +46,7 @@ const App = () => {
     // <View style={styles.container}>
     //   <ImageBackground
     //     source={require("../assets/images/night.jpg")}
+    //     // source={require("../assets/images/mountains.jpg")}
     //     style={styles.background}
     //     resizeMode="cover"
     //   >
