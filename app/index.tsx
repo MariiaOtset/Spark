@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   StyleSheet,
-  Text,
-  View,
-  ImageBackground,
-  FlatList,
+  // Text,
+  // View,
+  // ImageBackground,
+  // FlatList,
 } from "react-native";
 import { useFonts } from "expo-font";
 import RegistrationScreen from "./Screens/RegistrationScreen";
