@@ -9,10 +9,9 @@ import {
   Platform,
   KeyboardAvoidingView,
   Keyboard,
-  Pressable,TouchableWithoutFeedback,
+  Pressable,
 } from "react-native";
-// import { TouchableWithoutFeedback } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native";
 
 const RegistrationScreen = () => {
   const [login, setLogin] = useState("");
@@ -26,9 +25,10 @@ const RegistrationScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Pressable onPress={Keyboard.dismiss}>
+      <Pressable onPress={Keyboard.dismiss} style={{ flex: 1 }}>
         <KeyboardAvoidingView
           behavior={Platform.OS == "ios" ? "padding" : "height"}
+          style={{ flex: 1 }}
         >
           <View style={styles.container}>
             <ImageBackground
