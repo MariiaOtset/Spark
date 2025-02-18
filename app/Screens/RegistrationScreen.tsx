@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   toggleButton: {
     position: "absolute",
     top: 0,
-    right: 10,
+    right: 16,
     bottom: 0,
     justifyContent: "center",
     alignItems: "center",
