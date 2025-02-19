@@ -40,19 +40,19 @@ const RegistrationScreen = () => {
                 <Text style={styles.title}>Registration</Text>
 
                 <CustomInput
-                  placeholder="Enter your login"
+                  placeholder="Login"
                   value={login}
                   onChangeText={setLogin}
                 />
                 <CustomInput
-                  placeholder="Enter your email address"
+                  placeholder="Email address"
                   value={email}
                   onChangeText={setEmail}
                   autoComplete="email"
                 />
                 <View style={styles.inputContainer}>
                   <CustomInput
-                    placeholder="Enter your password"
+                    placeholder="Password"
                     value={password}
                     onChangeText={setPassword}
                     secureTextEntry={!isPasswordVisible}
@@ -63,7 +63,7 @@ const RegistrationScreen = () => {
                     onPress={togglePasswordVisibility}
                     style={styles.toggleButton}
                   >
-                    <Text style={styles.toggleText}>
+                    <Text style={[styles.toggleText, styles.textBase]}>
                       {isPasswordVisible ? "Hide" : "Show"}
                     </Text>
                   </Pressable>
@@ -73,9 +73,11 @@ const RegistrationScreen = () => {
                   title="Register"
                   onPress={(event) => console.log(event)}
                 />
-                <Text>
+                <Text style={[styles.textBase, styles.loginLink]}>
                   Already have an account?
-                  <Text>Log in</Text>
+                  <Text style={[styles.textBase, styles.loginLink]}>
+                    Log in
+                  </Text>
                 </Text>
               </View>
             </ImageBackground>
@@ -111,13 +113,17 @@ const styles = StyleSheet.create({
     color: "#212121",
     textAlign: "center",
     fontFamily: "Roboto-Medium",
-    fontWeight: "500",
     lineHeight: 30,
     letterSpacing: 0.3,
     fontSize: 30,
   },
   inputContainer: {
     position: "relative",
+  },
+  textBase: {
+    fontSize: 16,
+    lineHeight: 16,
+    fontFamily: "Roboto-Regular",
   },
   toggleButton: {
     position: "absolute",
@@ -129,10 +135,11 @@ const styles = StyleSheet.create({
   },
   toggleText: {
     color: "#1B4371",
-    fontFamily: "Roboto-Regular",
-    fontSize: 16,
-    fontWeight: 400,
-    lineHeight: 16,
+  },
+  loginLink: {
+    marginTop: 16,
+    marginHorizontal: "auto",
+    color: "#1B4371",
   },
 });
 
