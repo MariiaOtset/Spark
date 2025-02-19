@@ -10,7 +10,12 @@ import {
   KeyboardAvoidingView,
   Keyboard,
   Pressable,
+  Image,
+  Alert,
+  Button,
 } from "react-native";
+import * as ImagePicker from "expo-image-picker";
+
 import { SafeAreaView } from "react-native";
 
 const RegistrationScreen = () => {
@@ -18,9 +23,25 @@ const RegistrationScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [avatar, setAvatar] = useState<string | null>(null);
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prev) => !prev);
+  };
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [1, 1], // Квадратное изображение
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setAvatar(result.assets[0].uri);
+    } else {
+      Alert.alert("Выбор изображения отменён");
+    }
   };
 
   return (
@@ -37,6 +58,23 @@ const RegistrationScreen = () => {
               source={require("@/assets/images/mountains.jpg")}
             >
               <View style={styles.formContainer}>
+                <View style={{ alignItems: "center", marginTop: 20 }}>
+                  <Image
+                    source={
+                      avatar
+                        ? { uri: avatar }
+                        : require("@/assets/images/placeholder.webp")
+                    }
+                    style={{
+                      width: 120,
+                      height: 120,
+                      borderRadius: 14,
+                      borderWidth: 2,
+                      borderColor: "rgba(246, 246, 246, 1)",
+                    }}
+                  />
+                  <Button title="фото" onPress={pickImage} />
+                </View>
                 <Text style={styles.title}>Registration</Text>
 
                 <CustomInput
@@ -63,7 +101,7 @@ const RegistrationScreen = () => {
                     onPress={togglePasswordVisibility}
                     style={styles.toggleButton}
                   >
-                    <Text style={[styles.toggleText, styles.textBase]}>
+                    <Text style={[styles.textBase, styles.toggleText]}>
                       {isPasswordVisible ? "Hide" : "Show"}
                     </Text>
                   </Pressable>
