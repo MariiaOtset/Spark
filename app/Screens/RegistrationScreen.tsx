@@ -63,7 +63,7 @@ const RegistrationScreen = () => {
                     source={
                       avatar
                         ? { uri: avatar }
-                        : require("@/assets/images/placeholder.webp")
+                        : require("@/assets/images/add_photo.png")
                     }
                     style={{
                       width: 120,
